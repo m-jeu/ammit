@@ -54,4 +54,4 @@ def process(raw: pd.DataFrame) -> types.InformationMeasurementCombo:
     measurement_s = raw.loc[13:, 0]
     measurement_s = _configure_measurement_s(measurement_s, information_df)
 
-    return (information_df, measurement_s)
+    return information_df, measurement_s
