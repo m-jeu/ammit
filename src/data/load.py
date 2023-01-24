@@ -6,6 +6,26 @@ from tkinter.filedialog import askopenfilename
 import pandas as pd
 
 
+def _correct_trailing_commas(path: str, comma_n: int) -> None:
+    """Correct a file that doesn't contain a consistent amount of commas per line by adding the required
+    amount of commas to the end of lines still missing them.
+
+    Args:
+        path: path of file to correct.
+        comma_n: amount of commas that every line should have."""
+
+    with open(path, "r") as file:
+        lines = file.readlines()  # Will already include \n at end of line
+
+    lines = [
+        elem[:-1] + ((comma_n - elem.count(",")) * ",") + "\n"
+        for elem in lines
+    ]
+
+    with open(path, "w") as file:
+        file.writelines(lines)
+
+
 def _user_file_select() -> str:
     """Ask the user to select a .csv file through the windows file explorer, through a tkinter window.
 
