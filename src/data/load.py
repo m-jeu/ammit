@@ -16,7 +16,7 @@ def _correct_trailing_commas(path: str, comma_n: int) -> io.StringIO:
         comma_n: amount of commas that every line should have.
 
     Returns:
-        File with specified amount of commas on every line, """
+        File with specified amount of commas on every line, as StringIO."""
 
     with open(path, "r") as file:
         lines = file.readlines()  # Will already include \n at end of line
@@ -39,20 +39,20 @@ def _user_file_select() -> str:
     return path
 
 
-def _load_raw_csv(path: str) -> pd.DataFrame:
+def _load_raw_csv(content: Union[str, io.StringIO]) -> pd.DataFrame:
     """Load a CSV file with the specified formatting as discovered in exploration.ipynb.
 
     Args:
-        path: path to load file from.
+        content: thing to load, could either be path to file or (String)IO.
 
     Returns:
         Raw dataframe."""
-    return pd.read_csv(path, delimiter=",", header=None)
+    return pd.read_csv(content, delimiter=",", header=None)
 
 
 def fetch() -> Union[pd.DataFrame, None]:
-    """Ask user to select a file .CSV through _user_file_select(), and load selected file as Pandas dataframe
-    with _load_raw_csv().
+    """Ask user to select a file .CSV through _user_file_select(), pre-process it with _correct_trailing_commas(),
+    and load selected file as Pandas dataframe with _load_raw_csv().
 
     File will only load properly if in specified formatting such as discovered in exploration.ipynb.
 
@@ -60,4 +60,9 @@ def fetch() -> Union[pd.DataFrame, None]:
         Dataframe if file selection/load successful, None otherwise."""
     if (path := _user_file_select()) == "":
         return None
-    return _load_raw_csv(path)
+    return _load_raw_csv(
+        _correct_trailing_commas(
+            path,
+            2
+        )
+    )
