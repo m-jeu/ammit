@@ -1,29 +1,32 @@
 from typing import Union
 
+import io
 import tkinter as tk
 from tkinter.filedialog import askopenfilename
 
 import pandas as pd
 
 
-def _correct_trailing_commas(path: str, comma_n: int) -> None:
+def _correct_trailing_commas(path: str, comma_n: int) -> io.StringIO:
     """Correct a file that doesn't contain a consistent amount of commas per line by adding the required
     amount of commas to the end of lines still missing them.
 
     Args:
         path: path of file to correct.
-        comma_n: amount of commas that every line should have."""
+        comma_n: amount of commas that every line should have.
+
+    Returns:
+        File with specified amount of commas on every line, """
 
     with open(path, "r") as file:
         lines = file.readlines()  # Will already include \n at end of line
 
     lines = [
-        elem[:-1] + ((comma_n - elem.count(",")) * ",") + "\n"
+        elem[:-1] + ((comma_n - elem.count(",")) * ",")
         for elem in lines
     ]
 
-    with open(path, "w") as file:
-        file.writelines(lines)
+    return io.StringIO('\n'.join(lines))
 
 
 def _user_file_select() -> str:
