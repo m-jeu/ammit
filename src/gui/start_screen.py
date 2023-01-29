@@ -1,5 +1,4 @@
 import tkinter as tk
-import os
 
 import src
 
@@ -13,7 +12,7 @@ class MainWindow(tk.Tk):
 		#self.geometry("600x400")
 		#self.configure(bg="#FFCCCB")
 
-		self.iconbitmap(os.path.dirname(__file__) + "/icon.ico")
+		self.iconbitmap("icon.ico")
 
 		self.title_label = tk.Label(
 			master=self,
