@@ -26,7 +26,7 @@ def _correct_trailing_commas(path: str, comma_n: int) -> io.StringIO:
         for elem in lines
     ]
 
-    return io.StringIO('\n'.join(lines))
+    return io.StringIO("\n".join(lines))
 
 
 def _user_file_select() -> str:
