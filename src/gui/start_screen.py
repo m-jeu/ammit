@@ -1,4 +1,5 @@
 import tkinter as tk
+import os
 
 import src
 
@@ -12,14 +13,25 @@ class MainWindow(tk.Tk):
 		#self.geometry("600x400")
 		#self.configure(bg="#FFCCCB")
 
-		self.title = tk.Label(
+		self.iconbitmap(os.path.dirname(__file__) + "/icon.ico")
+
+		self.title_label = tk.Label(
 			master=self,
 			text="Ammit",
 			font=("Arial", 25)
 		)
 		#self.title.configure(bg="#FFCCCB")
-		self.title.configure(bg="#FFFFFF")
-		self.title.pack(pady=10)
+		self.title_label.configure(bg="#FFFFFF")
+		self.title_label.pack()
+
+		self.subtitle_label = tk.Label(
+			master=self,
+			text="Visualize heart rhythm",
+			font=("Arial", 10)
+		)
+		#self.title.configure(bg="#FFCCCB")
+		self.subtitle_label.configure(bg="#FFFFFF")
+		self.subtitle_label.pack()
 
 		self.button = tk.Button(
 			master=self,
@@ -52,7 +64,7 @@ class MainWindow(tk.Tk):
 
 		self.license_info = tk.Label(
 			master=self,
-			text="Maarten de Jeu, 2022.\n See LICENSE for license information."
+			text="See LICENSE for license information"
 		)
 		#self.license_info.configure(bg="#FFCCCB")
 		self.license_info.configure(bg="#FFFFFF")
