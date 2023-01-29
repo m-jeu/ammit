@@ -1,5 +1,5 @@
 # Ammit
-## Visualize heart rhythms
+### Visualize heart rhythms
 
 ## What?
 
@@ -13,7 +13,7 @@ A windows application that shouldn't require installing Python can be found at `
 
 ### The slightly less simple method
 
-The source code can be executed with a Python interpreter with the required packages at `main.py`.
+The source code can be executed with a Python interpreter with the required packages at `main.py`. Requirements can be installed from `requirements.txt`.
 
 ## Where?
 
