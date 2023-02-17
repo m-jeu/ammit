@@ -1,5 +1,6 @@
 import tkinter as tk
-
+import os
+import sys
 import src
 
 
@@ -10,7 +11,10 @@ class MainWindow(tk.Tk):
 		self.title("Ammit")
 		self.configure(bg="#FFFFFF")
 
-		self.iconbitmap("icon.ico")
+		"""self.iconbitmap("icon.ico")"""
+		root_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+		icon_path = os.path.join(root_path, "icon.ico")
+		self.iconbitmap = tk.PhotoImage(icon_path)
 
 		self.title_label = tk.Label(
 			master=self,
