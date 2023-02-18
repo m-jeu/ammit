@@ -9,7 +9,7 @@ A simple tool to visualize the heart rhythm as measured by apple watches. Apple 
 
 ### The simple method
 
-A windows application that shouldn't require installing Python can be found at `dist/main.exe`.
+A windows application that shouldn't require installing Python can be found at `dist/main.exe`. Note that this file requires all other files in it's folder to work.
 
 ### The slightly less simple method
 
